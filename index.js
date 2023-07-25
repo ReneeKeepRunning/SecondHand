@@ -127,10 +127,11 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
+const port = process.env.PORT || 3002
 
 
-app.listen(3002, () => {
-    console.log('listening on 3002')
+app.listen(port, () => {
+    console.log(`listening on ${port}`)
 })
 
 // if(!req.body.foundproduct) throw new expressError('invalid data')
