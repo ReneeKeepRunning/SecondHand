@@ -1,0 +1,32 @@
+body {
+    height: 100vh;
+    background-image: url("https://www.biggerbolderbaking.com/wp-content/uploads/2017/07/1C5A9406.jpg"), linear-gradient(rgba(124, 93, 93, 0.2),rgba(202, 94, 94, 0.2));
+    background-size: cover;
+    background-position: center;
+}
+
+.cover-container {
+    max-width: 60vw;
+}
+
+.nav-link{
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color:antiquewhite;
+    margin-left:1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color: aqua;
+}
+
+.nav-link.active{
+    color: white;
+    border-bottom-color: white;
+
+}
+
+.btn-secondary, .btn-secondary:hover{
+    color:beige
+}

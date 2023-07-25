@@ -1,0 +1,84 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">New product adding</h1>
+    <div class="col-md-6 offset-md-3">
+     <form action="/dogGrooming" method="POST" novalidate class="validation-check" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product name</label> 
+            <input type="text" class="form-control"name="product[name]" id="name" placeholder="Product name" required>
+        <div class="valid-feedback">
+            looks perfect~
+        </div>
+        <div class="invalid-feedback">
+            Please fill a product name.
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="price">$</span>
+                <input type="number" class="form-control" name="product[price]" placeholder="0.00" aria-label="price" aria-describedby="price" required>
+                <div class="valid-feedback">
+                    looks perfect~
+                </div>
+                <div class="invalid-feedback">
+                    Please fill a price.
+                  </div>
+                </div>
+         </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Product description</label>
+            <textarea class="form-control" type="text" id="description" name="product[description]" required></textarea>
+        <div class="valid-feedback">
+            looks perfect~
+        </div>
+        <div class="invalid-feedback">
+            Please fill a description.
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Pick-up point / shipping from</label>
+            <textarea class="form-control" type="text" id="location" name="product[location]" required></textarea>
+        <div class="valid-feedback">
+            looks perfect~
+        </div>
+        <div class="invalid-feedback">
+            Please fill a location.
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Category type</label>
+            <select name="product[category]" id="category">
+            <% for(let category of categories){%>
+                <option value="<%=category%>"><%=category%></option>
+                <%}%>
+            </select>
+            <!-- <option value="dental">dental</option>
+            <option value="shower">shower</option>
+            <option value="health">health</option>
+            <option value="other">other</option> -->
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Uploade Image(s)</label>
+            <input class="form-control" type="file" id="image" name="image" multiple required>
+        <div class="valid-feedback">
+            looks perfect~
+        </div>
+        <div class="invalid-feedback">
+            Please upload an image.
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary">submit</button>
+        </form>
+            <a href="/dogGrooming">cancel</a>
+        </div>
+    </div>
+</div>
+

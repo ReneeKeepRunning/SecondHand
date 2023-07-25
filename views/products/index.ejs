@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate')%>
+    <h1> products here</h1>
+    <div>
+        <a href="/dogGrooming/new">Create a new product</a>
+    </div>
+    
+        <% for(let product of foundproduct){ %>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <%if(product.image.length){%>
+                    <img class="img-fluid" src="<%=product.image[0].url%>">
+                    <%}else {%>
+                        <img class="img-fluid" src="https://res-console.cloudinary.com/dktixmv1b/thumbnails/v1/image/upload/v1688626445/U2Vjb25kSGFuZCBwcm9kdWN0cy9nZ2JqN2d6NmR4bDNwY2NpdHFwaA==/preview">
+                    <%}%>
+                 </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=product.name%></h5>
+                            <p class="card-category"><%=product.category%></p>
+                            <p class="card-category"><%=product.price%></p>
+                            <p class="card-category"><%=product.description%></p>
+                            <a class="btn btn-primary" href="/dogGrooming/<%=product._id%>">view details about <%=product.name%></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        <%}%>
+        
+   
+    

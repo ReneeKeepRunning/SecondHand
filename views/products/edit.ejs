@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">Product editing</h1>
+    <div class="col-md-6 offset-md-3">
+        <form action="/dogGrooming/<%=foundproduct._id%>?_method=PUT" method="POST" novalidate class="validation-check" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product name</label> 
+            <input type="text" class="form-control"name="product[name]" id="name"placeholder="Product name" value="<%=foundproduct.name%>" required>
+            <div class="valid-feedback">
+                looks perfect~
+            </div>
+            <div class="invalid-feedback">
+                Please fill a product name.
+              </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="price">$</span>
+                <input type="number" class="form-control" name="product[price]" placeholder="0.00" aria-label="price" aria-describedby="price" value="<%=foundproduct.price%>" required>
+                <div class="valid-feedback">
+                    looks perfect~
+                </div>
+                <div class="invalid-feedback">
+                    Please fill a price.
+                  </div>
+              </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Product description</label>
+            <textarea class="form-control" type="text" id="description" name="product[description]" required><%=foundproduct.description%></textarea>
+            <div class="valid-feedback">
+                looks perfect~
+            </div>
+            <div class="invalid-feedback">
+                Please fill a description.
+              </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Pick-up point / shipping from</label>
+            <textarea class="form-control" type="text" id="location" name="product[location]" required><%=foundproduct.location%></textarea>
+        <div class="valid-feedback">
+            looks perfect~
+        </div>
+        <div class="invalid-feedback">
+            Please fill a location.
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Category type</label>
+            <select name="product[category]" id="category">
+                <%for(let i=0; i< categories.length; i++){%>
+                    <option value="<%=categories[i]%>" <%= foundproduct.category === categories[i] ? 'selected' :''%>><%=categories[i]%></option>
+                <%}%>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Adding more image(s)</label>
+            <input class="form-control" type="file" id="image" name="image" multiple>
+            <div class="valid-feedback">
+                looks perfect~
+            </div>
+            <div class="invalid-feedback">
+                Please upload an image file.
+              </div>
+        </div>
+        <div class="mb-3">
+            <% foundproduct.image.forEach(function(img, i){ %>
+                <img src="<%=img.thumbnail%>" class="img-thumbnail">
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="deleteImages[]" value="<%=img.filename%>" id="img-<%=i%>">
+                </div>
+                    <label for="img-<%=i%>">Delete?</label>
+            <% })%>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Save</button>
+        </form>
+            <a href="/dogGrooming/<%=foundproduct._id%>">cancel</a>
+        </div>
+    </div>
