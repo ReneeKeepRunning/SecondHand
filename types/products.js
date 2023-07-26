@@ -1,75 +1,75 @@
-const mongoose= require ('mongoose');
-const { ReviewJoiSchema } = require('../JoiSchemas');
-const Review = require ('./review')
-const Client= require('./client')
+const mongoose = require('mongoose');
+const { ReviewJoiSchema } = require('../joiSchemas');
+const Review = require('./review')
+const Client = require('./client')
 
-const imageSchema= new mongoose.Schema({
-    url: String, 
+const imageSchema = new mongoose.Schema({
+    url: String,
     filename: String
 })
 
-imageSchema.virtual('thumbnail').get(function(){
+imageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200')
 })
 
-const productSchema= new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+const productSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
     },
-    price:{
-        type:Number,
-        min:0
+    price: {
+        type: Number,
+        min: 0
     },
-    petCategory:{
-        type:String,
+    petCategory: {
+        type: String,
     },
     description: {
         type: String
-        },
-    category:{
+    },
+    category: {
         type: String
-        },
+    },
     condition: {
-        type:String
-        },
-    image:[imageSchema],
-    location:{
+        type: String
+    },
+    image: [imageSchema],
+    location: {
         type: String
     },
     geometry: {
         type: {
-          type: String, 
-          enum: ['Point'],
-          required: true
+            type: String,
+            enum: ['Point'],
+            required: true
         },
         coordinates: {
-          type: [Number],
-          required: true
+            type: [Number],
+            required: true
         }
-      },
-    author:[
+    },
+    author: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref:'Client'
+            ref: 'Client'
         }],
-    review:[
+    review: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref:'Review'
+            ref: 'Review'
         }]
-    })
+})
 
-    productSchema.post('findOneAndDelete', async(product)=>{
-        const list = product.review
-        for(let r of list){
-           //const id= r.valueOf()
-           //const reviewDelete= await Review.findByIdAndDelete(reviewId)
-           const review=await Review.remove(r)
-           console.log(review)
-        }
-    })
+productSchema.post('findOneAndDelete', async (product) => {
+    const list = product.review
+    for (let r of list) {
+        //const id= r.valueOf()
+        //const reviewDelete= await Review.findByIdAndDelete(reviewId)
+        const review = await Review.remove(r)
+        console.log(review)
+    }
+})
 
-const Product= mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', productSchema);
 
-module.exports= Product;
+module.exports = Product;
