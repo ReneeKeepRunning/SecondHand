@@ -1,4 +1,4 @@
-const BaseJoi = require('Joi')
+const basejoi = require('joi')
 const sanitizeHtml= require('sanitize-html')
 //const { validateProduct } = require('./middleware')
 
@@ -21,24 +21,24 @@ const extension= (joi) =>({
         }
     }
 })
-const Joi = BaseJoi.extend(extension)
+const joi = basejoi.extend(extension)
 
-module.exports.ProductJoiSchemas = Joi.object({
-    product:Joi.object({
-        name: Joi.string().required(),
-        price: Joi.number().required().min(0),
-        description: Joi.string().required(),
-        location: Joi.string().required(),
-        image: Joi.string().required(),
-        category: Joi.required(),
-        deleteImages: Joi.array()
+module.exports.ProductJoiSchemas = joi.object({
+    product:joi.object({
+        name: joi.string().required(),
+        price: joi.number().required().min(0),
+        description: joi.string().required(),
+        location: joi.string().required(),
+        image: joi.string().required(),
+        category: joi.required(),
+        deleteImages: joi.array()
 })
 })
 // if(!req.body) throw new expressError('Invalid data', 400)
 
-module.exports.ReviewJoiSchema = Joi.object({
-    review: Joi.object({
-        body: Joi.string().required(),
-        rating: Joi.number().required()
+module.exports.ReviewJoiSchema = joi.object({
+    review: joi.object({
+        body: joi.string().required(),
+        rating: joi.number().required()
     }).required()
 })
