@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const { ReviewJoiSchema } = require('../joiSchemas');
 const Review = require('./review')
-const Client = require('./client')
 
 const imageSchema = new mongoose.Schema({
     url: String,
