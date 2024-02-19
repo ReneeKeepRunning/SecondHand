@@ -1,7 +1,7 @@
 const basejoi = require('joi')
 const sanitizeHtml = require('sanitize-html')
 //const { validateProduct } = require('./middleware')
-
+jJ
 const extension = (joi) => ({
     type: 'string',
     base: joi.string(),
@@ -42,5 +42,3 @@ module.exports.ReviewJoiSchema = joi.object({
         rating: joi.number().required()
     }).required()
 })
-
-console.log("temp commit")
