@@ -1,7 +1,7 @@
 const basejoi = require('joi')
 const sanitizeHtml = require('sanitize-html')
 //const { validateProduct } = require('./middleware')
-
+jJ
 const extension = (joi) => ({
     type: 'string',
     base: joi.string(),

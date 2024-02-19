@@ -1,4 +1,4 @@
-const { ProductJoiSchemas, ReviewJoiSchema } = require('./joiSchemas')
+const { ProductJoiSchemas, ReviewJoiSchema } = require('./jJoiSchemas')
 const expressError = require('./helper/expressError')
 const Product = require('./types/products')
 const Review = require('./types/review')
