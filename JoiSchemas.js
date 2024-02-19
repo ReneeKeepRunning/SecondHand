@@ -42,5 +42,3 @@ module.exports.ReviewJoiSchema = joi.object({
         rating: joi.number().required()
     }).required()
 })
-
-console.log("temp commit")
