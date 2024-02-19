@@ -1,10 +1,7 @@
-const { ProductJoiSchemas, ReviewJoiSchema } = require('./joiSchemas.js')
+const { ProductJoiSchemas, ReviewJoiSchema } = require('./joiSchemas')
 const expressError = require('./helper/expressError')
 const Product = require('./types/products')
 const Review = require('./types/review')
-
-
-
 
 
 module.exports.loggedCheck = (req, res, next) => {
